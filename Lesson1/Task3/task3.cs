@@ -7,13 +7,11 @@ for (int i = 0; i < listSize; i++) {
     numbersList.Add(number);
 }
 
-for (int i = 0; i < listSize; i++) {
-    int numberCount = numbersList.Count(num => {
-        return num == numbersList[i];
-    });
-    if (numberCount > 1 && numbersList.LastIndexOf(numbersList[i]) <= 9)
-        numbersList.Add(numbersList[i]);
-}
+Console.Write($"Enter last number: ");
+int dublicateNumber = Convert.ToInt32(Console.ReadLine());
+
+if (numbersList.Contains(dublicateNumber))
+    numbersList.Add(dublicateNumber);
 
 foreach (int n in numbersList) 
     Console.Write($"{n}, ");
