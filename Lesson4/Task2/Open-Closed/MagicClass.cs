@@ -1,19 +1,14 @@
 ﻿namespace Open_Closed;
 
-public class MagicClass : IMagic
+public class MagicClass
 {
-    public void CountYourMagic(int magic)
+    public void CountYourMagic(IMagic? Magic)
     {
-        if (magic == 150)
+        if (Magic != null)
         {
-            Console.WriteLine("Wow, your magic is fire magic!");
+            Console.WriteLine($"Wow, your magic is {Magic.MagicName}");
             return;
-        }
-        if (magic == 50000000)
-        {
-            Console.WriteLine("Incredible! You have 50 millions of power! It's water magic!");
-            return;
-        }
+        } 
         Console.WriteLine("I understand you...");
     }
 }

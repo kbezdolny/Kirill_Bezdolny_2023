@@ -2,5 +2,6 @@
 
 public interface IMagic
 {
-    public void CountYourMagic(int magic);
+    int MagicValue { get; }
+    string MagicName { get; }
 }
