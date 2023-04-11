@@ -3,5 +3,5 @@
 public interface IFlyable
 
 {
-    public void Flyable();
+    void Flyable();
 }
