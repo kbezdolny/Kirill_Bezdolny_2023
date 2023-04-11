@@ -1,8 +1,6 @@
-﻿using LiskovSubstitution.Interfaces;
+﻿namespace LiskovSubstitution.Vehicles;
 
-namespace LiskovSubstitution.Vehicles;
-
-public class Vehicle : IMoveable
+public class Vehicle
 {
     protected string? VehicleType { get; set; }
     public Perfomance? Perfomance { get; set; }
@@ -14,10 +12,5 @@ public class Vehicle : IMoveable
     public virtual void StartEngine()
     {
         Console.WriteLine("The engine is starting");
-    }
-
-    public virtual void Move()
-    {
-        Console.WriteLine("It's moving?");
     }
 }

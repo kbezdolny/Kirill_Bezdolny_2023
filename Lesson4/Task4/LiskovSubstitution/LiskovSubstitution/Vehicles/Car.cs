@@ -1,6 +1,8 @@
-﻿namespace LiskovSubstitution.Vehicles;
+﻿using LiskovSubstitution.Interfaces;
 
-public class Car : Vehicle
+namespace LiskovSubstitution.Vehicles;
+
+public class Car : Vehicle, IDriveable
 {
     public Car()
     {
@@ -8,6 +10,11 @@ public class Car : Vehicle
     }
     public override void StartEngine()
     {
-        Console.WriteLine("The car engine is starting");
+        Console.WriteLine($"The {VehicleType} engine is starting");
+    }
+
+    public void Driveable()
+    {
+        Console.WriteLine("It's driving?");
     }
 }

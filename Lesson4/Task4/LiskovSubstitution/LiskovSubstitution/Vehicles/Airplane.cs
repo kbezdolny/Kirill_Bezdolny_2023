@@ -1,6 +1,8 @@
-﻿namespace LiskovSubstitution.Vehicles;
+﻿using LiskovSubstitution.Interfaces;
 
-public class Airplane : Vehicle
+namespace LiskovSubstitution.Vehicles;
+
+public class Airplane : Vehicle, IFlyable
 {
     public Airplane()
     {
@@ -8,10 +10,10 @@ public class Airplane : Vehicle
     }
     public override void StartEngine()
     {
-        Console.WriteLine("The airplane engine is starting");
+        Console.WriteLine($"The {VehicleType} engine is starting");
     }
 
-    public override void Move()
+    public void Flyable()
     {
         Console.WriteLine("It's flying?");
     }
