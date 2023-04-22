@@ -34,7 +34,6 @@ public static class WorkingWithDirectory
             else
             {
                 var newPath = _path + @"\" + dirName.Replace("/", @"\");
-                if (!Directory.Exists(newPath) && !File.Exists(newPath)) return null;
                 path = newPath;
             }
         }
@@ -91,22 +90,25 @@ public static class WorkingWithDirectory
     {
         if (dirName is null) return;
         var path = GetNewPath(dirName);
+        if (path is null) return;
         if (toPath is null)
         {
             toPath = GetPath() + @"\" + dirName;
         }
         else
         {
-            toPath = GetNewPath(toPath) + @"\" + dirName;
+            if (Path.IsPathRooted(dirName))
+            {
+                toPath = GetNewPath(toPath) + @"\" + new DirectoryInfo(dirName).Name;
+            }
+            else
+            {
+                toPath = GetNewPath(toPath) + @"\" + dirName;
+            }
         }
-        if (path is null) return;
-        
         
         DirectoryInfo dir = new DirectoryInfo(path);
-        if (!dir.Exists)
-        {
-            return;
-        }
+        if (!dir.Exists) return;
         DirectoryInfo[] dirs = dir.GetDirectories();
         if (!Directory.Exists(toPath))
         {
@@ -119,7 +121,7 @@ public static class WorkingWithDirectory
         }
         foreach (DirectoryInfo subdir in dirs)
         {
-            Copy(subdir.FullName, Path.Combine(toPath, subdir.Name));
+            Copy(Path.Combine(path, subdir.Name), toPath);
         }
     }
     

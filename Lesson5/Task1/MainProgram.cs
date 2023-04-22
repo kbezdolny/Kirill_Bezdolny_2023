@@ -75,15 +75,12 @@ public class MainProgram
                     case "-c":
                         if (File.Exists(WorkingWithDirectory.GetNewPath(allPaths?[0])))
                         {
-                            Console.WriteLine("File");
                             WorkingWithFiles.Copy(allPaths?[0], allPaths?[1]);
                         }
                         else if (Directory.Exists(WorkingWithDirectory.GetNewPath(allPaths?[0])))
                         {
-                            Console.WriteLine("Dir");
                             WorkingWithDirectory.Copy(allPaths?[0], allPaths?[1]);
                         }
-                        Console.WriteLine("Copy");
                         break;
                     case "-m":
                         if (File.Exists(WorkingWithDirectory.GetNewPath(allPaths?[0])))
